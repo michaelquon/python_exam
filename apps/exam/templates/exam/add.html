@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Document</title>
+    <style>
+    div{
+        width: 800px;
+        margin: 0 auto;
+    }
+    li{
+        color: red;
+    }
+    a{
+        float: right;
+    }
+
+</style>
+</head>
+
+<body>
+    <div>
+        <a href="/dashboard">| Home |</a>
+        <a href="/"> Logout |</a>
+        <h1>Create a New Wish List Item</h1>
+        <form action="/addWish" method="post">
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% csrf_token %}
+            <label for="item">Item/Product:
+                <input type="text" name="item" id="add_item">
+            </label>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add
+            <i class="material-icons right">send</i>
+            </button>
+           
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+
+</html>

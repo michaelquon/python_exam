@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Document</title>
+    <style>
+    div{
+        width: 800px;
+        margin: 0 auto;
+    }
+    li{
+        color: red;
+    }
+    .add{
+        float: right;
+    }
+
+</style>
+</head>
+<body>
+    <div>
+        <a class="add" href="/"> Logout |</a>
+        <h1>Hello {{user_name}}</h1>
+        
+        <form action="/">
+        <table class="striped">
+            <tr>
+                <h3>Your Wish List:</h3>
+                <th>Item</th>
+                <th>Added by</th>
+                <th>Date Added</th>
+                <th>Action</th>
+                
+            </tr>
+            <tr>
+                
+                {%for item in my_wish%}
+                <td><a href="/show/{{item.id}}">{{item.item}}</a></td>
+                <td>{{ item.added_by.name }}</td>
+                <td>{{ item.created_at}}</td>
+                
+                <td><a href="/destroy/{{item.id}}">Remove fom my Wishlist</a></td> 
+    
+              </tr>
+              {% endfor %}
+        </table>
+        <table class="striped">
+            <tr>
+                <h3>Other Users' Wish List</h3>
+                <th>Item</th> 
+                <th>Added by</th>
+                <th>Date Added</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                {%for items in other_wishes%}
+                <td><a href="/show/{{item.id}}">{{items.item}}</a></td>
+                <td>{{items.added_by.name}}</td>
+                <td>{{ items.created_at }}</td>
+                <td><a href="/createJoin/{{items.id}}">Add to my Wishlist</a></td>
+                
+              </tr>
+              {%endfor%}
+        </table>
+
+        <a class="add" href="/add">Add Item</a>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+</html>

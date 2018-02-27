@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Login</title>
+   
+        <style>
+    div{
+        width: 800px;
+        margin: 0 auto;
+    }
+    li{
+        color: red;
+    }
+
+</style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1>Register</h1>
+        <form id='form' action='/create' method='post'>
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            <label>Name: <input type='text' name='name'></label>
+            <label>Username: <input type='text' name='username'></label>
+            <label>Password: <input type='password' name='password'></label>
+            <label>Confirm PW: <input type='password' name='confirm_pw'></label>
+            <label>Date Hired: <input type='date' name='date_hired'></label>
+           <a href="/dashboard"> <input class='btn' type='submit' value='Register'></a>
+        </form>
+    </div>
+    
+    <div id="cont-two" class="wrapper">
+        <h1>Login</h1>
+        <form action='/login' method='POST'>
+            {% csrf_token %} 
+            <label>Username: <input type='text' name='username'></label>
+            <label>Password: <input type='password' name='password'></label>
+           <a href="/dashboard"><input class='btn'type='submit' value='Login'></a>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+</html>
+
+

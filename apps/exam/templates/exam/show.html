@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Document</title>
+    <style>
+            div{
+                width: 800px;
+                margin: 0 auto;
+            }
+            li{
+                color: red;
+            }
+            a{
+        float: right;
+    }
+    span{
+        font-size: 20px;
+    }
+        
+        </style>
+</head>
+
+<body>
+    <div>
+            <a href="/dashboard">| Home |</a>
+            <a href="/"> Logout |</a>
+        <form action="show">
+        
+                <h1>{{thisWish.item}}</h1>
+               
+        </form>
+        <form action="show">
+            
+                <h3>Users who added this product/item under their wish list</h3>
+            {%for item in others%}
+                <h5>{{item.name}}</h5>
+            {%endfor%}
+        </form>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+
+</html>
